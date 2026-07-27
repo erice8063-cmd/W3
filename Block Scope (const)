@@ -1,0 +1,10 @@
+const constVar = {name: 'Bob'}
+let letVar = 1
+
+constVar.name = 'Rudy'
+
+console.log(constVar)
+
+Output: Rudy
+
+Credit: https://youtu.be/9WIJQDvt4Us
