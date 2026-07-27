@@ -1,0 +1,16 @@
+function openFridge(...foods){
+    console.log(...foods);
+  }
+function getFood(...foods){
+  return foods;
+  }
+const food1 = "pizza";
+const food2 = "hamburger";
+const food3 = "hotdog";
+
+const foods = getFood(food1, food2, food3);
+console.log(foods);
+
+Output: pizza, hamburger, hotdog
+
+Credit: https://youtu.be/ahwR1D_GAfc
