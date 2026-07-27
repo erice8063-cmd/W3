@@ -1,0 +1,7 @@
+let obj = {
+  value1 : 1
+  value2 : "ab",
+..,
+..,
+value20 : 20
+};
