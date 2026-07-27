@@ -1,0 +1,7 @@
+const hello = (name, age) => {console.log(`Hello ${name}!`); console.log(`You are ${age} years old.`);};
+
+hello('Bro', 25);   
+
+Output: Hello Bro! You are 25 years old.
+
+Credit: https://youtu.be/fRRRkognpOs
