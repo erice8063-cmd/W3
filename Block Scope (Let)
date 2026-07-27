@@ -1,0 +1,6 @@
+let num = 3000;
+num.toFixed(4); 
+
+console.log(num);
+
+Output: 3000
