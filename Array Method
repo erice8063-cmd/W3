@@ -1,0 +1,9 @@
+let fruits = ["apple", "orange", "banana"];
+
+console.log(fruits[0]);
+console.log(fruits[1]);
+console.log(fruits[2]);
+
+Output: apple, orange, banana
+
+Credit: https://youtu.be/yQ1fz8LY354
