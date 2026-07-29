@@ -1,0 +1,85 @@
+const form = document.getElementById('form') as HTMLFormElement | null
+    const firstname_input = document.getElementById('firstname-input') as HTMLInputElement | null
+    const lastname_input = document.getElementById('lastname-input') as HTMLInputElement | null
+    const username_input = document.getElementById('username-input') as HTMLInputElement | null
+    const password_input = document.getElementById('password-input') as HTMLInputElement | null
+    const repeat_password_input = document.getElementById('repeat-password-input') as HTMLInputElement | null
+    const error_message = document.getElementById('error-message') as HTMLElement | null
+
+    function markIncorrect(input: HTMLInputElement | null): void {
+        input?.parentElement?.classList.add('incorrect')
+    }
+
+    form?.addEventListener('submit', (e) => {
+        let errors: string[] = []
+
+        if (firstname_input && lastname_input && username_input && password_input) {
+            errors = getSignupFormErrors(
+                firstname_input.value,
+                lastname_input.value,
+                username_input.value,
+                password_input.value,
+                repeat_password_input?.value ?? ''
+            )
+        } else if (lastname_input && username_input) {
+            errors = getLoginFormErrors(lastname_input.value, username_input.value)
+        }
+
+        if (errors.length > 0) {
+            e.preventDefault()
+            if (error_message) {
+                error_message.innerText = errors.join('. ')
+            }
+        }
+    })
+
+    function getLoginFormErrors(lastname: string, username: string): string[] {
+        const errors: string[] = []
+
+        if (lastname === '' || lastname === null) {
+            errors.push('Lastname is required')
+        }
+        if (username === '' || username === null) {
+            errors.push('Username is required')
+        }
+
+        return errors
+    }
+
+    function getSignupFormErrors(firstname: string, lastname: string, username: string, password: string, repeatPassword: string): string[] {
+        const errors: string[] = []
+
+        if (firstname === '' || firstname === null) {
+            errors.push('Firstname is required')
+            markIncorrect(firstname_input)
+        }
+
+        if (lastname === '' || lastname === null) {
+            errors.push('Lastname is required')
+            markIncorrect(lastname_input)
+        }
+
+        if (username === '' || username === null) {
+            errors.push('Username is required')
+            markIncorrect(username_input)
+        }
+
+        if (password === '' || password === null) {
+            errors.push('Password is required')
+            markIncorrect(password_input)
+        }
+
+        if (password.length < 8) {
+            errors.push('Password must be at least 8 characters long')
+            markIncorrect(password_input)
+        }
+
+        if (password !== repeatPassword) {
+            errors.push('Passwords do not match')
+            markIncorrect(password_input)
+            markIncorrect(repeat_password_input)
+        }
+
+        return errors
+    }
+()
